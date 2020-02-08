@@ -2,10 +2,6 @@ package programmers;
 
 public class 타겟넘버 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 	class Solution {
 		int cnt;
 	    public int solution(int[] numbers, int target) {
