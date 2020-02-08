@@ -2,12 +2,7 @@ package programmers;
 
 import java.util.Arrays;
 
-public class ±¸¸íº¸Æ® {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+public class Â±Â¸Â¸Ã­ÂºÂ¸Ã†Â® {
 	class Solution {
 	    public int solution(int[] people, int limit) {
 	        int answer = 0;
