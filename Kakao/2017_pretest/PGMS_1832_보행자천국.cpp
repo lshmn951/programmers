@@ -28,7 +28,7 @@ int find(int r,int c,int d,vector<vector<int>> &city_map){
 
 int solution(int m, int n, vector<vector<int>> city_map) {
     for(int i=0;i<m;i++){
-        fill(arr[i],arr[i]+n,0);//전역 변수 초
+        fill(arr[i],arr[i]+n,0);//전역 변수 초기화
     }
     if(m==1 && n==1){
         return 1;
