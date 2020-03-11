@@ -55,7 +55,7 @@ int solution(int m, int n, vector<vector<int>> city_map) {
             if(city_map[i][j]==1){//1이면 갈 수 있는 방법이 0개
                 arr[i][j]=0;
             }
-            else if(city_map[i][j]==0 || city_map[i][j]==2){
+            else {
                 int x = find(i-1,j,1,city_map);//위에서 현재 위치로 올 수 있는 방법 수
                 int y = find(i,j-1,0,city_map);//왼쪽에서 현재 위치로 올 수 있는 방법 수
                 arr[i][j] = (x+y)%MOD;
