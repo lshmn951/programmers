@@ -3,7 +3,6 @@ using namespace std;
 
 int MOD = 20170805;
 int arr[500][500];
-
 int find(int r,int c,int d,vector<vector<int>> &city_map){
     if(d==0){//왼쪽에서 오른쪽
         int temp = 0;
@@ -28,6 +27,9 @@ int find(int r,int c,int d,vector<vector<int>> &city_map){
 }
 
 int solution(int m, int n, vector<vector<int>> city_map) {
+    for(int i=0;i<m;i++){
+        fill(arr[i],arr[i]+n,0);
+    }
     if(m==1 && n==1){
         return 1;
     }
