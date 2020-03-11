@@ -28,13 +28,13 @@ int find(int r,int c,int d,vector<vector<int>> &city_map){
 
 int solution(int m, int n, vector<vector<int>> city_map) {
     for(int i=0;i<m;i++){
-        fill(arr[i],arr[i]+n,0);
+        fill(arr[i],arr[i]+n,0);//전역 변수 초
     }
     if(m==1 && n==1){
         return 1;
     }
     arr[0][0] = 1;
-    for(int i=1;i<n;i++){
+    for(int i=1;i<n;i++){//가장 윗줄
         if(city_map[0][i]==1){
             arr[0][i] = 0;
         }
@@ -42,7 +42,7 @@ int solution(int m, int n, vector<vector<int>> city_map) {
             arr[0][i] = arr[0][i-1];
         }
     }
-    for(int i=1;i<m;i++){
+    for(int i=1;i<m;i++){//가장 왼쪽줄
         if(city_map[i][0]==1){
             arr[i][0] = 0;
         }
@@ -52,12 +52,12 @@ int solution(int m, int n, vector<vector<int>> city_map) {
     }
     for(int i=1;i<m;i++){
         for(int j=1;j<n;j++){
-            if(city_map[i][j]==1){
+            if(city_map[i][j]==1){//1이면 갈 수 있는 방법이 0개
                 arr[i][j]=0;
             }
             else if(city_map[i][j]==0 || city_map[i][j]==2){
-                int x = find(i-1,j,1,city_map);
-                int y = find(i,j-1,0,city_map);
+                int x = find(i-1,j,1,city_map);//위에서 현재 위치로 올 수 있는 방법 수
+                int y = find(i,j-1,0,city_map);//왼쪽에서 현재 위치로 올 수 있는 방법 수
                 arr[i][j] = (x+y)%MOD;
             }
         }
