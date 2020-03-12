@@ -27,7 +27,7 @@ int solution(string s){// 200309 풀이 check()함수와 묶음
     }
     for(int i=1;i<=s.length()/2;i++){
         res = "";
-        check(s.substr(0,i),s.substr(i,s.size()-1),1,i);
+        check(s.substr(0,i),s.substr(i,s.size()),1,i);
         int tmp = res.size();
         answer = min(answer,tmp);
     }
