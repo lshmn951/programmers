@@ -13,12 +13,14 @@ bool cmp(Web p1, Web p2) {
         return p1.score > p2.score;
 }
 void makeUpper(string &str){
+    //단어를 찾기 위해 문자열을 모두 대문자로 통일
     for(int i=0;i<str.length();i++){
         str[i] = toupper(str[i]);
     }
 }
 
 string findUrl(string preUrl,string html){
+    //웹페이지 url을 반환
     string endUrl = "\"/>";
     int s = html.find(preUrl)+preUrl.length();
     int e = html.substr(s).find(endUrl);
@@ -26,6 +28,7 @@ string findUrl(string preUrl,string html){
     return html.substr(s,e);
 }
 int findLinkCnt(string preLink,string html){
+    //웹페이지의 외부 링크 개수 반환
     int count =0;
     while(true){
         int s = html.find(preLink);
@@ -38,6 +41,7 @@ int findLinkCnt(string preLink,string html){
     return count;
 }
 pair<string,int> findLink(string preLink,string html){
+    //외부 링크 주소를 string 으로, 다음 외부 링크를 찾기위해 인덱스를 int로 반환
     string link = "";
     string endLink ="\">";
     int s = html.find(preLink);
@@ -51,6 +55,7 @@ pair<string,int> findLink(string preLink,string html){
 }
 
 int findWordCount(string word,string html){
+    //웹페이지의 텍스트에서 단어 개수 반환
     int count =0;
     makeUpper(word);
     html = html.substr(html.find("<body>")+7);
