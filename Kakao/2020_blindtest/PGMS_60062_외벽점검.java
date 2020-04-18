@@ -20,8 +20,10 @@ public class PGMS_60062_외벽점검 {
         int size = weak.length;
         for(int i=0;i<size;i++) {
         	for(int j=1;j<=dist.length;j++) {
+        		//dist 배열에서 1개 부터 dist길이 개수 만큼 숫자를 순열을 통해 뽑고 검사
         		per(j,0,new boolean[dist.length],weak,dist,new int[j]);
         	}
+        	// 점검을 시작할 위치를 바꿔주는 작업
         	int up = weak[0];
         	for(int j=0;j<size-1;j++) {
         		weak[j] = weak[j+1];
@@ -29,9 +31,11 @@ public class PGMS_60062_외벽점검 {
         	weak[size-1] = up+n;
         }
         if(min==Integer.MAX_VALUE) {
+        	// 점검이 불가능할 경우
         	answer = -1;
         }
         else {
+        	// 점검 가능할 경우 최소 인원이 정답
         	answer = min;
         }
         return answer;
@@ -39,6 +43,7 @@ public class PGMS_60062_외벽점검 {
 	public static void per(int r,int k,boolean [] visit,int []weak,int []dist,int []temp) {
 		if(r==k) {
 			if(check(weak,temp)) {
+				// 순열로 뽑아낸 인원들을 통해 점검을 완료할 수 있다면 min값을 최솟값으로 갱신
 				min = Math.min(min, r);
 			}
 		}
@@ -55,20 +60,21 @@ public class PGMS_60062_외벽점검 {
 	}
 	public static boolean check(int []weak,int[] temp) {
 		int size = temp.length;
-		int idx = 0;
-		int st = weak[0];
-		for(int i=0;i<size;i++) {
+		int idx = 0; // 점검을 진행중인 weak배열의 인덱스
+		int st = weak[0]; // st는 한 인원이 점검을 시작한 위치
+		for(int i=0;i<size;i++) {//뽑아낸 인원 수 만큼
 			for(int j=idx;j<weak.length;j++) {
-				if(st+temp[i]<weak[j]) {
-					st = weak[j];
+				if(st+temp[i]<weak[j]) { // 현재 점검 중인 인원이 1시간에 점검할 수 있는 위치를 벗어났을 경우
+					st = weak[j]; // 다음 인원이 점검을 시작할 위치를 st에 대입 
 					break;
 				}
 				else {
+					// 점검할 weak 배열의 인덱스 이동
 					idx++;
 				}
 			}
 		}
-		if(idx==weak.length) {
+		if(idx==weak.length) {// 점검을 완료한 경우
 			return true;
 		}
 		return false;
