@@ -10,7 +10,7 @@ public class PGMS_12907_거스름돈 {
 	final static int mod = 1000000007;
 	public static int solution(int n, int[] money) {
         int answer = 0;
-        int [] dp = new int [n+1];
+        int [] dp = new int [n+1];// dp[n]은 n원을 거슬러 줄 수 있는 방법의 수
         dp[0] = 1;
         for(int i=money[0];i<=n;i+=money[0]) {
         	dp[i] = 1;
